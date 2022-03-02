@@ -19,7 +19,17 @@
 #include <xc.h>
 #define XTAL_Freq 20000000
 void main(void) {
+    TRISA = 0b00001111; //RA0 to RA3 pin input
+    TRISB = 0b00000000; //RB4 and RB5 pin output
+    TRISC = 0b00000000; //RC3 and RC4 pin output
     
+    PORTB = 0b00000000; //LED OFF
+    
+    SSPSTAT = 0b11000000; //Status register
+    SSPCON = 0b00101000; //Control register
+    SSPCON2 = 0b00000000; //COntrol register
+    SSPADD = 49; // (freq Quartz/4*freq com)-1
+         
     while(1)
     {
         
